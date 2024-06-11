@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ContactList from "./ContactList";
 import ContactForm from "./ContactForm";
+import { contactContext } from "../../context/myContext";
 
 const initialContacts = [
   { id: 1, name: "John Doe", email: "john@example.com", phone: "123-456-7890" },
@@ -22,6 +23,8 @@ const Contacts = () => {
   const [contacts, setContacts] = useState(initialContacts);
   const [editingContact, setEditingContact] = useState(null);
   const addContact = (contact) => setContacts([...contacts, contact]);
+  const {Contact} = useContext(contactContext)
+  console.log(`this is coming from contact context ${Contact}`)
   const updateContact = (updatedContact) => {
     setContacts(
       contacts.map(
